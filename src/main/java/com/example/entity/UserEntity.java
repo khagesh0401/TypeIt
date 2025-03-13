@@ -1,10 +1,16 @@
 package com.example.entity;
 
+import java.util.List;
+
+import org.hibernate.annotations.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,7 +28,17 @@ public class UserEntity {
 	
 	@Column(nullable = false,unique = true)
 	private String username;
-
+	
+	
+	@OneToMany(mappedBy = "userEntity",cascade = jakarta.persistence.CascadeType.ALL)
+	private List<TypingTestEntity> typingtest;
+	
+	@OneToOne(mappedBy = "userEntity",cascade = jakarta.persistence.CascadeType.ALL)
+	private TypinganalyticsEntity typinganalyticsEntity;
+	
+	@OneToMany(mappedBy = "userEntity",cascade = jakarta.persistence.CascadeType.ALL)
+	private List<LeaderboardEntity> leaderboardEntities;
+	
 	public int getId() {
 		return id;
 	}

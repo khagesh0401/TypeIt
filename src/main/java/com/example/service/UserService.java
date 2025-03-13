@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.bean.UserBean;
-import com.example.repowraper.UserRepoWrapper;
+import com.example.repowrapper.UserRepoWrapper;
 
 @Service
 public class UserService {
