@@ -28,4 +28,10 @@ public class UserRepoWrapper {
 		BeanUtils.copyProperties(userBean, userEntity);
 		return userEntity;
 	}
+	
+	public UserBean entitytoBean(UserEntity userEntity) {
+		UserBean userBean= new UserBean();
+		BeanUtils.copyProperties(userEntity, userBean);
+		return userBean;
+	}
 }

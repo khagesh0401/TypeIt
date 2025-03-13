@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "typinganalytics")
-public class TypinganalyticsEntity {
+public class TypingAnalyticsEntity {
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )

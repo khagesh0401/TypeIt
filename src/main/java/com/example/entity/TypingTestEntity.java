@@ -30,7 +30,7 @@ public class TypingTestEntity {
 	private int accuracy;
 	
 	@Column(nullable = false)
-	private int duration;
+	private long duration;
 	
 	private LocalDateTime completed_at;
 	
@@ -42,4 +42,82 @@ public class TypingTestEntity {
 	@ManyToOne
 	@JoinColumn(name = "textId")
 	private TextEntity textEntity;
+	
+	private LocalDateTime startTime;
+	private LocalDateTime stopTime;
+	
+	
+	public LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public LocalDateTime getStopTime() {
+		return stopTime;
+	}
+
+	public void setStopTime(LocalDateTime stopTime) {
+		this.stopTime = stopTime;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getWpm() {
+		return wpm;
+	}
+
+	public void setWpm(int wpm) {
+		this.wpm = wpm;
+	}
+
+	public int getAccuracy() {
+		return accuracy;
+	}
+
+	public void setAccuracy(int accuracy) {
+		this.accuracy = accuracy;
+	}
+
+	public long getDuration() {
+		return duration;
+	}
+
+	public void setDuration(long duration) {
+		this.duration = duration;
+	}
+
+	public LocalDateTime getCompleted_at() {
+		return completed_at;
+	}
+
+	public void setCompleted_at(LocalDateTime completed_at) {
+		this.completed_at = completed_at;
+	}
+
+	public UserEntity getUserEntity() {
+		return userEntity;
+	}
+
+	public void setUserEntity(UserEntity userEntity) {
+		this.userEntity = userEntity;
+	}
+
+	public TextEntity getTextEntity() {
+		return textEntity;
+	}
+
+	public void setTextEntity(TextEntity textEntity) {
+		this.textEntity = textEntity;
+	}
+	
+	
 }

@@ -34,10 +34,10 @@ public class UserEntity {
 	private List<TypingTestEntity> typingtest;
 	
 	@OneToOne(mappedBy = "userEntity",cascade = jakarta.persistence.CascadeType.ALL)
-	private TypinganalyticsEntity typinganalyticsEntity;
+	private TypingAnalyticsEntity typinganalyticsEntity;
 	
 	@OneToMany(mappedBy = "userEntity",cascade = jakarta.persistence.CascadeType.ALL)
-	private List<LeaderboardEntity> leaderboardEntities;
+	private List<LeaderBoardEntity> leaderboardEntities;
 	
 	public int getId() {
 		return id;

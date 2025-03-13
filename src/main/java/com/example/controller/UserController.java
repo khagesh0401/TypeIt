@@ -15,8 +15,8 @@ public class UserController {
 	@Autowired
 	public UserService userService;
 	
-	@PostMapping("/register")
-	public String Print(@RequestBody UserBean userBean) {
+	@PostMapping("/user/register")
+	public String add(@RequestBody UserBean userBean) {
 		int id= userService.saveUser(userBean);
 		return "User with id:- "+id+" registered successfully";
 	}
