@@ -29,6 +29,7 @@ public class TypingTestService {
 		LocalDateTime startTime=LocalDateTime.now();
 		TypingTestEntity testEntity=new TypingTestEntity();
 		testEntity.setStartTime(startTime);
+		typingTestRepoWrapper.typingTestRepo.save(testEntity);
 		return testEntity.getId();
 	}
 	
@@ -39,6 +40,7 @@ public class TypingTestService {
 		}
 		LocalDateTime stopTime=LocalDateTime.now();
 		testEntity.setStopTime(stopTime);
+		typingTestRepoWrapper.typingTestRepo.save(testEntity);
 		 
 	}
 	

@@ -26,7 +26,6 @@ public class TextEntity {
 	@Column(nullable = false)
 	private String content;
 	
-	//not sure about thr relationship
 	@OneToMany
 	private List<TypingTestEntity> typingTestEntities;
 	
