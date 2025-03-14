@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.bean.TextBean;
 import com.example.bean.TypingTestBean;
 import com.example.bean.UserBean;
 import com.example.service.TypingTestService;
@@ -18,9 +19,9 @@ public class TypingTestcontroller {
 	TypingTestService typingTestService;
 	
 	@PostMapping("/start")
-	public int startTest(@RequestBody UserBean user) {
+	public TextBean startTest(@RequestBody UserBean user) {
 		int testId=typingTestService.startTypingTest();
-		return testId;
+		return null;
 	}
 	
 	@PostMapping("/stop/{testId}")

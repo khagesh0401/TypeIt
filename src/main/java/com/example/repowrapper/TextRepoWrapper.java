@@ -1,5 +1,8 @@
 package com.example.repowrapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +24,15 @@ public class TextRepoWrapper {
 		if(textRepo.findRandomText()!=null) {
 		 textBean=entitytoBean(textRepo.findRandomText());}
 		return textBean;
+	}
+	
+	public List<TextBean> findAll(){
+		List<TextBean> textBeans = new ArrayList<>();
+		List<TextEntity> textEntities=textRepo.findAll();
+		for(TextEntity textEntity:textEntities) {
+			textBeans.add(entitytoBean(textEntity));
+		}
+		return textBeans;
 	}
 	
 	public TextEntity beantoEntity(TextBean textBean) {

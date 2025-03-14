@@ -1,5 +1,8 @@
 package com.example.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +25,11 @@ public class TextService {
         	return textBean;
         }
     }
+	
+	public List<TextBean> findAll() {
+		List<TextBean> textBeans = new ArrayList<>();
+		textBeans = textRepoWrapper.findAll();
+		return textBeans;
+	}
+	
 }

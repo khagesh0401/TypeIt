@@ -2,17 +2,19 @@ package com.example.bean;
 
 import java.beans.JavaBean;
 
-import com.example.entity.TextEntity.Difficulty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @JavaBean
 public class TextBean {
 	
 	private String content;
-	private Difficulty difficulty;
 	
-	public enum Difficulty{
-		EASY,MEDIUM,HARD
-	}
+	@Column(name = "difficulty")
+	private String difficulty;
+	
 
 	public String getContent() {
 		return content;
@@ -22,11 +24,11 @@ public class TextBean {
 		this.content = content;
 	}
 
-	public Difficulty getDifficulty() {
+	public String getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(Difficulty difficulty) {
+	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
 	
