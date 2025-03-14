@@ -3,9 +3,12 @@ package com.example.entity;
 import java.security.PrivateKey;
 import java.util.List;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,18 +26,15 @@ public class TextEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false,length = 1000)
 	private String content;
 	
-	//not sure about thr relationship
 	@OneToMany
 	private List<TypingTestEntity> typingTestEntities;
 	
-	private Difficulty difficulty;
-	
-	public enum Difficulty{
-		EASY,MEDIUM,HARD
-	}
+
+	@Column(nullable = false)
+	private String difficulty;
 
 	public int getId() {
 		return id;
@@ -52,11 +52,11 @@ public class TextEntity {
 		this.content = content;
 	}
 
-	public Difficulty getDifficulty() {
+	public String getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(Difficulty difficulty) {
+	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
 	

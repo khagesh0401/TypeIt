@@ -3,13 +3,13 @@ package com.example.service;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-import org.hibernate.boot.jaxb.internal.stax.LocalXmlResourceResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.bean.TypingTestBean;
 import com.example.bean.UserBean;
 import com.example.entity.TypingTestEntity;
+import com.example.repowrapper.TextRepoWrapper;
 import com.example.repowrapper.TypingTestRepoWrapper;
 
 @Service
@@ -17,6 +17,9 @@ public class TypingTestService {
 
 	@Autowired
 	public TypingTestRepoWrapper typingTestRepoWrapper;
+	
+	@Autowired
+	public TextRepoWrapper textRepoWrapper;
 	
 	public TypingTestBean saveTypingTestService(TypingTestBean typingTestBean,UserBean user) {
 		int wpm=calculateTypingSpeed(typingTestBean.getWpm(), typingTestBean.getDuration());
@@ -29,6 +32,7 @@ public class TypingTestService {
 		LocalDateTime startTime=LocalDateTime.now();
 		TypingTestEntity testEntity=new TypingTestEntity();
 		testEntity.setStartTime(startTime);
+		typingTestRepoWrapper.typingTestRepo.save(testEntity);
 		return testEntity.getId();
 	}
 	
@@ -39,6 +43,7 @@ public class TypingTestService {
 		}
 		LocalDateTime stopTime=LocalDateTime.now();
 		testEntity.setStopTime(stopTime);
+		typingTestRepoWrapper.typingTestRepo.save(testEntity);
 		 
 	}
 	

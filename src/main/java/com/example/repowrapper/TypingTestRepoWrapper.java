@@ -1,5 +1,7 @@
 package com.example.repowrapper;
 
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,9 +22,11 @@ public class TypingTestRepoWrapper {
 	public UserRepoWrapper userRepoWrapper;
 	
 	public TypingTestBean saveTypingTest(TypingTestBean typingTestBean,UserBean user) {
+		//need to save textId as well from textEntity
 		UserEntity userEntity=userRepoWrapper.beantoEntity(user);
 		TypingTestEntity typingTestEntity=beantoEntity(typingTestBean);
 		typingTestEntity.setUserEntity(userEntity);
+		typingTestRepo.save(typingTestEntity);
 		return typingTestBean;
 	}
 	

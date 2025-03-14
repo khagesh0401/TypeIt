@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.entity.TypingTestEntity;
-import java.util.List;
 
 
 @Repository
@@ -13,3 +12,4 @@ public interface TypingTestRepo extends JpaRepository<TypingTestEntity, Integer>
 	
 	public TypingTestEntity findById(int id);
 }
+	 
