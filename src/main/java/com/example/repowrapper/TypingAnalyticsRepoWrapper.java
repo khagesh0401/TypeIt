@@ -5,37 +5,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.example.bean.TypingAnalyticsBean;
 import com.example.entity.TypingAnalyticsEntity;
+import com.example.entity.UserEntity;
 import com.example.repo.TypingAnalyticsRepo;
 
 @Component
 public class TypingAnalyticsRepoWrapper {
 	@Autowired
 	public TypingAnalyticsRepo typingAnalyticsRepo;
-	
 	@Autowired
 	public UserRepoWrapper userRepoWrapper;
+
 	
-	public TypingAnalyticsBean updateData(TypingAnalyticsBean typingAnalyticsBean,int userId) {
-//		TypingAnalyticsEntity typingAnalyticsEntity=beantoEntity(typingAnalyticsBean);
-		
-		TypingAnalyticsEntity typingAnalyticsEntity=beantoEntity(findByIdWrapper(userId));
-		//only retrieving accuracy not others
-		System.out.println(typingAnalyticsEntity.getUserEntity());
-		System.out.println(typingAnalyticsEntity.getWPMAverage());
-		System.out.println(typingAnalyticsEntity.getAccuracyAverage());
-		typingAnalyticsEntity.setAccuracyAverage(typingAnalyticsBean.getAccuracyAverage());
-		typingAnalyticsEntity.setWPMAverage(typingAnalyticsBean.getWPMAverage());
-		
-//		typingAnalyticsEntity.setUserEntity(userRepoWrapper.findById(userId));
-		typingAnalyticsRepo.save(typingAnalyticsEntity);
-		return typingAnalyticsBean;
+	public TypingAnalyticsBean updateData(TypingAnalyticsEntity typingAnalyticsEntity,int userId) {
+		TypingAnalyticsEntity typingAnalyticsEntity2=findByIdWrapper(userId);
+		typingAnalyticsEntity2.setAccuracyAverage(typingAnalyticsEntity.getAccuracyAverage());
+		typingAnalyticsEntity2.setWPMAverage(typingAnalyticsEntity.getWPMAverage());
+		typingAnalyticsRepo.save(typingAnalyticsEntity2);
+		return entitytoBean(typingAnalyticsEntity2);
 	}
 	
-	public TypingAnalyticsBean findByIdWrapper(int UserId) {
+	public TypingAnalyticsEntity findByIdWrapper(int UserId) {
 		TypingAnalyticsEntity typingAnalyticsEntity=typingAnalyticsRepo.findByUserEntity_UserId(UserId);
 		if(typingAnalyticsEntity==null)
 			return null;
-		return entitytoBean(typingAnalyticsEntity);
+		return typingAnalyticsEntity;
 	}
 	
 	public TypingAnalyticsEntity beantoEntity(TypingAnalyticsBean typingAnalyticsBean) {

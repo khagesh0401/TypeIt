@@ -12,8 +12,8 @@ public class TypingAnalyticsBean {
 	public int getWPMAverage() {
 		return WPMAverage;
 	}
-	public void setWPMAverage(int wPMAvergae) {
-		WPMAverage = WPMAverage;
+	public void setWPMAverage(int wpmAverage) {
+		WPMAverage = wpmAverage;
 	}
 	public int getAccuracyAverage() {
 		return AccuracyAverage;
