@@ -17,4 +17,6 @@ public interface TextRepo extends JpaRepository<TextEntity, Integer>{
 	
 	@Query(value = "SELECT * FROM texts",nativeQuery = true)
 	public List<TextEntity> findAll();
+	
+	public TextEntity findById(int id);
 }

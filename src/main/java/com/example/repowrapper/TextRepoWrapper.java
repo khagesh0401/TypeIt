@@ -35,6 +35,10 @@ public class TextRepoWrapper {
 		return textBeans;
 	}
 	
+	public TextEntity findById(int textId) {
+		return textRepo.findById(textId);
+	}
+	
 	public TextEntity beantoEntity(TextBean textBean) {
 		TextEntity textEntity= new TextEntity();
 		BeanUtils.copyProperties(textBean, textEntity);

@@ -1,20 +1,13 @@
 package com.example.entity;
 
-import java.security.PrivateKey;
 import java.util.List;
 
-import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -24,12 +17,12 @@ public class TextEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int textId;
 	
 	@Column(nullable = false,length = 1000)
 	private String content;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "textEntity",cascade = CascadeType.ALL)
 	private List<TypingTestEntity> typingTestEntities;
 	
 
@@ -37,11 +30,11 @@ public class TextEntity {
 	private String difficulty;
 
 	public int getId() {
-		return id;
+		return textId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.textId = id;
 	}
 
 	public String getContent() {
@@ -60,7 +53,5 @@ public class TextEntity {
 		this.difficulty = difficulty;
 	}
 	
-	
-	@OneToMany(mappedBy = "textEntity",cascade = CascadeType.ALL)
-	private List<TypingTestEntity> typingTestEntity;
+	public TextEntity() {}
 }

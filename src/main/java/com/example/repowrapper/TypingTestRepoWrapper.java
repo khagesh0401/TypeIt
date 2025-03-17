@@ -1,13 +1,15 @@
 package com.example.repowrapper;
 
-import java.util.Optional;
+import java.awt.event.TextEvent;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.example.bean.TextBean;
 import com.example.bean.TypingTestBean;
 import com.example.bean.UserBean;
+import com.example.entity.TextEntity;
 import com.example.entity.TypingTestEntity;
 import com.example.entity.UserEntity;
 import com.example.repo.TypingTestRepo;
@@ -19,13 +21,19 @@ public class TypingTestRepoWrapper {
 	public TypingTestRepo typingTestRepo;
 	
 	@Autowired
+	public TextRepoWrapper textRepoWrapper;
+	
+	@Autowired
 	public UserRepoWrapper userRepoWrapper;
 	
-	public TypingTestBean saveTypingTest(TypingTestBean typingTestBean,UserBean user) {
+	public TypingTestBean saveTypingTest(TypingTestBean typingTestBean,int userId,int textId) {
 		//need to save textId as well from textEntity
-		UserEntity userEntity=userRepoWrapper.beantoEntity(user);
+		UserEntity userEntity=userRepoWrapper.findById(userId);
+		TextEntity textEntity=textRepoWrapper.findById(textId);
 		TypingTestEntity typingTestEntity=beantoEntity(typingTestBean);
+		if(userEntity!=null)
 		typingTestEntity.setUserEntity(userEntity);
+		typingTestEntity.setTextEntity(textEntity);
 		typingTestRepo.save(typingTestEntity);
 		return typingTestBean;
 	}

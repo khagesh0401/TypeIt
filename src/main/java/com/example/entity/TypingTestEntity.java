@@ -1,4 +1,4 @@
-	package com.example.entity;
+package com.example.entity;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
@@ -29,7 +29,9 @@ public class TypingTestEntity {
 	
 	private LocalDateTime completed_at;
 	
-
+	//Unable to create typingtest table
+	
+	//mapping issues, ig, need only 1 table i think, an
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private UserEntity userEntity;
@@ -114,5 +116,6 @@ public class TypingTestEntity {
 		this.textEntity = textEntity;
 	}
 	
+	public TypingTestEntity() {}
 	
 }

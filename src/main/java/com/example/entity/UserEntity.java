@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int userId;
 	
 	@Column(nullable = false,unique = true)
 	private String email;
@@ -40,11 +40,11 @@ public class UserEntity {
 	private List<LeaderBoardEntity> leaderboardEntities;
 	
 	public int getId() {
-		return id;
+		return userId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.userId = id;
 	}
 
 	public String getEmail() {
@@ -70,4 +70,6 @@ public class UserEntity {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	public UserEntity() {}
 }

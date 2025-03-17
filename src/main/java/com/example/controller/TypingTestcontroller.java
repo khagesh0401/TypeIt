@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bean.TextBean;
@@ -30,7 +31,10 @@ public class TypingTestcontroller {
 	}
 	
 	@PostMapping("/test/save")
-	public TypingTestBean saveTest(@RequestBody TypingTestBean typingTestBean,UserBean user) {
-		return typingTestService.saveTypingTestService(typingTestBean, user);
+	public TypingTestBean saveTest(
+		@RequestBody TypingTestBean typingTestBean,
+	    @RequestParam int userId,
+	    @RequestParam int textId) {
+		return typingTestService.saveTypingTestService(typingTestBean, userId,textId);
 	}
 }

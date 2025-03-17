@@ -21,10 +21,10 @@ public class TypingTestService {
 	@Autowired
 	public TextRepoWrapper textRepoWrapper;
 	
-	public TypingTestBean saveTypingTestService(TypingTestBean typingTestBean,UserBean user) {
+	public TypingTestBean saveTypingTestService(TypingTestBean typingTestBean,int userId,int textId) {
 		int wpm=calculateTypingSpeed(typingTestBean.getWpm(), typingTestBean.getDuration());
 		long duration = calculateDuration();
-		return typingTestRepoWrapper.saveTypingTest(typingTestBean,user);
+		return typingTestRepoWrapper.saveTypingTest(typingTestBean,userId,textId);
 	}
 	
 	//something is not right
